@@ -14,7 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private CustomUserDetailsService  customUserDetailsService;
+    private CustomUserDetailsService customUserDetailsService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -28,7 +28,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
             .antMatchers("/admin").hasRole("ADMIN")
-            .antMatchers("/user").hasAnyRole("USER", "ADMIN")
+            .antMatchers("/user").hasAnyRole("USER","ADMIN")
             .antMatchers("/").permitAll()
             .anyRequest().authenticated()
             .and()
@@ -36,7 +36,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public PasswordEncoder getPasswordEncoder() {
+    public PasswordEncoder getPasswordEncoder(){
         return NoOpPasswordEncoder.getInstance();
     }
 }

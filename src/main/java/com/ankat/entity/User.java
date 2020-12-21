@@ -14,12 +14,19 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "USR_ID", updatable = false, unique = true, nullable = false)
+    @Column(name = "USR_ID", nullable = false, updatable = false, unique = true)
     private Long usrId;
 
     @NonNull
     @Column(name = "USR_NAME", nullable = false)
     private String usrName;
+
+    @Column(name = "USR_AGE")
+    private Integer usrAge;
+
+    @NonNull
+    @Column(name = "USR_USERNAME", nullable = false, updatable = false, unique = true)
+    private String usrUsername;
 
     @NonNull
     @Column(name = "USR_PASSWORD", nullable = false)
@@ -32,5 +39,4 @@ public class User {
     @NonNull
     @Column(name = "USR_ACTIVE", nullable = false)
     private Boolean usrActive;
-
 }
